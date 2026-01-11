@@ -38,6 +38,9 @@ export { VisLineModule } from './components/line/line.module'
 export { VisNestedDonutComponent } from './components/nested-donut/nested-donut.component'
 export { VisNestedDonutModule } from './components/nested-donut/nested-donut.module'
 
+export { VisPlotlineComponent } from './components/plotline/plotline.component'
+export { VisPlotlineModule } from './components/plotline/plotline.module'
+
 export { VisSankeyComponent } from './components/sankey/sankey.component'
 export { VisSankeyModule } from './components/sankey/sankey.module'
 
@@ -68,6 +71,12 @@ export { VisLeafletFlowMapModule } from './html-components/leaflet-flow-map/leaf
 
 export { VisBulletLegendComponent } from './html-components/bullet-legend/bullet-legend.component'
 export { VisBulletLegendModule } from './html-components/bullet-legend/bullet-legend.module'
+
+export { VisFlowLegendComponent } from './html-components/flow-legend/flow-legend.component'
+export { VisFlowLegendModule } from './html-components/flow-legend/flow-legend.module'
+
+export { VisRollingPinLegendComponent } from './html-components/rolling-pin-legend/rolling-pin-legend.component'
+export { VisRollingPinLegendModule } from './html-components/rolling-pin-legend/rolling-pin-legend.module'
 
 export { VisTooltipComponent } from './components/tooltip/tooltip.component'
 export { VisTooltipModule } from './components/tooltip/tooltip.module'

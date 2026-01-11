@@ -7,6 +7,7 @@ import { FrameworkTabs } from '../components/framework-tabs'
 import { PropsTable } from '@site/src/components/PropsTable'
 import { generateDataRecords, generateTimeSeries } from '../utils/data'
 import { XYWrapper, XYWrapperWithInput } from '../wrappers'
+import { Axis } from '@unovis/ts'
 
 export const axisProps = (n=10) => ({
   name: "Axis",
@@ -213,7 +214,7 @@ The specified count is only a hint, the axis can have more or fewer ticks depend
 Set the `minMaxTicksOnly` property to `true` if you only want to see the two end ticks on the axis.
 
 :::note
-To display the minimum and maximum ticks only when the chart width is limited (this behavior is enabed my default),
+To display the minimum and maximum ticks only when the chart width is limited (this behavior is enabled my default),
 you can use the `minMaxTicksOnlyWhenWidthIsLess` property (defaults to 250px). This helps avoid clutter in smaller visualizations while still
 providing essential information.
 :::
@@ -224,6 +225,17 @@ providing essential information.
   defaultValue={true}
   property="minMaxTicksOnly"/>
 
+
+When using `minMaxTicksOnly`, you can still show grid lines by setting `minMaxTicksOnlyShowGridLines` to `true`.
+
+<XYWrapperWithInput
+  minMaxTicksOnly={true}
+  {...axisProps()}
+  inputType="checkbox"
+  defaultValue={true}
+  property="minMaxTicksOnlyShowGridLines"
+  hiddenProps={{}}
+/>
 
 ### Set Ticks Explicitly
 You can customize the ticks displayed by providing the _Axis_ component with a number array.
@@ -278,27 +290,10 @@ The _Axis_ component supports additional styling via CSS variables that you can 
 <details open>
   <summary>All supported CSS variables and their default values</summary>
   <CodeBlock language="css">
-    {`--vis-axis-font-family
---vis-axis-tick-color: #e8e9ef;
---vis-axis-domain-color: // Unset, falls back to --vis-axis-tick-color;
---vis-axis-tick-label-color: #6c778c;
---vis-axis-grid-color: #e8e9ef;
---vis-axis-label-color: #6c778c;
---vis-axis-tick-label-font-size: 12px;
---vis-axis-tick-label-cursor: default;
---vis-axis-tick-label-text-decoration: none;
---vis-axis-label-font-size: 14px;
---vis-axis-tick-line-width: 1px;
---vis-axis-grid-line-width: 1px;
---vis-axis-domain-line-width: // Unset, falls back to --vis-axis-grid-line-width;
- 
-/* Dark Theme */
---vis-dark-axis-tick-color: #6c778c;
---vis-dark-axis-domain-color: // Unset, falls back to --vis-dark-axis-tick-color;
---vis-dark-axis-tick-label-color: #e8e9ef;
---vis-dark-axis-grid-color: #6c778c;
---vis-dark-axis-label-color: #fefefe;`}
-  </CodeBlock>
+{`${
+  Object.entries(Axis.selectors.cssVarDefaults)
+  .map(([key, value]) => `${key}: ${value};`).join('\n')}
+`}</CodeBlock>
 </details>
 
 ## Events

@@ -10,6 +10,7 @@ export const examples: ExampleCollection[] = [
       require('./basic-line-chart').default,
       require('./multi-line-chart').default,
       require('./data-gap-line-chart').default,
+      require('./patchy-line-chart').default,
       require('./basic-timeline').default,
     ],
   },
@@ -19,6 +20,7 @@ export const examples: ExampleCollection[] = [
     examples: [
       require('./non-stacked-area-chart').default,
       require('./stacked-area-chart').default,
+      require('./stacked-area-chart-with-attributes').default,
       require('./baseline-area-chart').default,
       require('./step-area-chart').default,
     ],
@@ -64,6 +66,7 @@ export const examples: ExampleCollection[] = [
       require('./force-graph').default,
       require('./parallel-graph').default,
       require('./elk-layered-graph').default,
+      require('./custom-nodes-graph').default,
     ],
   },
   {
@@ -73,6 +76,13 @@ export const examples: ExampleCollection[] = [
       require('./basic-donut-chart').default,
       require('./hierarchical-chord-diagram').default,
       require('./sunburst-nested-donut').default,
+    ],
+  },
+  {
+    title: 'Treemap',
+    description: '',
+    examples: [
+      require('./treemap').default,
     ],
   },
   {
@@ -91,7 +101,7 @@ export const examples: ExampleCollection[] = [
       require('./crosshair-stacked-bar').default,
       require('./brush-grouped-bar').default,
       require('./free-brush-scatters').default,
-      require('./basic-plotband').default,
+      require('./plotband-plotline').default,
     ],
   },
   /* {} */

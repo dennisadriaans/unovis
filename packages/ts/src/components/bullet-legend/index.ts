@@ -1,7 +1,9 @@
 import { select, Selection } from 'd3-selection'
 
 // Utils
+import { toPx } from 'utils/to-px'
 import { merge } from 'utils/data'
+import { getCSSVariableValueInPixels } from 'utils/misc'
 
 // Config
 import { BulletLegendDefaultConfig, BulletLegendConfigInterface } from './config'
@@ -10,7 +12,7 @@ import { BulletLegendDefaultConfig, BulletLegendConfigInterface } from './config
 import { BulletLegendItemInterface, BulletLegendOrientation } from './types'
 
 // Modules
-import { createBullets, updateBullets } from './modules/shape'
+import { createBullets, updateBullets, getBulletsTotalWidth } from './modules/shape'
 
 // Styles
 import * as s from './style'
@@ -25,7 +27,7 @@ export class BulletLegend {
   prevConfig: BulletLegendConfigInterface
   protected _container: HTMLElement
 
-  private _colorAccessor = (d: BulletLegendItemInterface): string => d.color
+  private _colorAccessor = (d: BulletLegendItemInterface): string|string[] => d.color
 
   constructor (element: HTMLElement, config?: BulletLegendConfigInterface) {
     this._container = element
@@ -35,13 +37,18 @@ export class BulletLegend {
 
     this.element = this.div.node()
 
-    if (config) this.update(config)
+    if (config) this.setConfig(config)
   }
 
-  update (config: BulletLegendConfigInterface): void {
+  setConfig (config: BulletLegendConfigInterface): void {
     this.prevConfig = this.config
     this.config = merge(this._defaultConfig, config)
     this.render()
+  }
+
+  /** @deprecated Use setConfig instead */
+  update (config: BulletLegendConfigInterface): void {
+    this.setConfig(config)
   }
 
   render (): void {
@@ -66,7 +73,13 @@ export class BulletLegend {
       .call(createBullets)
 
     legendItemsMerged.select<SVGElement>(`.${s.bullet}`)
-      .style('width', config.bulletSize)
+      .style('width', function (d: BulletLegendItemInterface) {
+        const colors = Array.isArray(d.color) ? d.color : [d.color]
+        const numColors = colors.length
+        const baseSize = config.bulletSize ? toPx(config.bulletSize) : (getCSSVariableValueInPixels('var(--vis-legend-bullet-size)', this) || 9)
+        const spacing = config.bulletSpacing
+        return `${getBulletsTotalWidth(baseSize, numColors, spacing)}px`
+      })
       .style('height', config.bulletSize)
       .style('box-sizing', 'content-box')
       .call(updateBullets, this.config, this._colorAccessor)

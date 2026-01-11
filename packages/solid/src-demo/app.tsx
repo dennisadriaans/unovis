@@ -3,15 +3,18 @@ import { For, lazy } from 'solid-js'
 const examples = [
   // Composite Charts
   lazy(() => import('@unovis/shared/examples/dual-axis-chart/dual-axis-chart-solid')),
+  lazy(() => import('@unovis/shared/examples/treemap/treemap-solid')),
   lazy(() => import('@unovis/shared/examples/range-plot/range-plot-solid')),
   // Line Charts
   lazy(() => import('@unovis/shared/examples/basic-line-chart/basic-line-chart-solid')),
   lazy(() => import('@unovis/shared/examples/multi-line-chart/multi-line-chart-solid')),
   lazy(() => import('@unovis/shared/examples/data-gap-line-chart/data-gap-line-chart-solid')),
+  lazy(() => import('@unovis/shared/examples/patchy-line-chart/patchy-line-chart-solid')),
   lazy(() => import('@unovis/shared/examples/basic-timeline/basic-timeline-solid')),
   // Area Charts
   lazy(() => import('@unovis/shared/examples/non-stacked-area-chart/non-stacked-area-chart-solid')),
   lazy(() => import('@unovis/shared/examples/stacked-area-chart/stacked-area-chart-solid')),
+  lazy(() => import('@unovis/shared/examples/stacked-area-chart-with-attributes/stacked-area-chart-with-attributes-solid')),
   lazy(() => import('@unovis/shared/examples/baseline-area-chart/baseline-area-chart-solid')),
   lazy(() => import('@unovis/shared/examples/step-area-chart/step-area-chart-solid')),
   // Bar Charts
@@ -33,6 +36,7 @@ const examples = [
   lazy(() => import('@unovis/shared/examples/force-graph/force-graph-solid')),
   lazy(() => import('@unovis/shared/examples/parallel-graph/parallel-graph-solid')),
   lazy(() => import('@unovis/shared/examples/elk-layered-graph/elk-layered-graph-solid')),
+  lazy(() => import('@unovis/shared/examples/custom-nodes-graph/custom-nodes-graph-solid')),
   // Circular Charts
   lazy(() => import('@unovis/shared/examples/basic-donut-chart/basic-donut-chart-solid')),
   lazy(() => import('@unovis/shared/examples/hierarchical-chord-diagram/hierarchical-chord-diagram-solid')),
@@ -42,7 +46,7 @@ const examples = [
   lazy(() => import('@unovis/shared/examples/crosshair-stacked-bar/crosshair-stacked-bar-solid')),
   lazy(() => import('@unovis/shared/examples/brush-grouped-bar/brush-grouped-bar-solid')),
   lazy(() => import('@unovis/shared/examples/free-brush-scatters/free-brush-scatters-solid')),
-  lazy(() => import('@unovis/shared/examples/basic-plotband/basic-plotband-solid')),
+  lazy(() => import('@unovis/shared/examples/plotband-plotline/plotband-plotline-solid')),
 ]
 
 const App = () => {

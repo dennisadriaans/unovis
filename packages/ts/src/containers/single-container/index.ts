@@ -99,7 +99,9 @@ export class SingleContainer<Data> extends ContainerCore {
   protected _preRender (): void {
     super._preRender()
     this.component.setSize(this.width, this.height, this.containerWidth, this.containerHeight)
+    this.component.setContainerMargin(this.config.margin)
     this.config.annotations?.setSize(this.width, this.height, this.containerWidth, this.containerHeight)
+    this.config.annotations?.setContainerMargin(this.config.margin)
   }
 
   protected _render (duration?: number): void {
@@ -111,6 +113,7 @@ export class SingleContainer<Data> extends ContainerCore {
     config.annotations?.render(duration)
 
     if (config.tooltip) config.tooltip.update()
+    config.onRenderComplete?.(this.svg.node(), config.margin, this.containerWidth, this.containerHeight, this.width, this.height)
   }
 
   // Re-defining the `render()` function to handle different sizing techniques (`Sizing.Extend` and `Sizing.FitWidth`)

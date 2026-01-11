@@ -171,8 +171,13 @@ export class Timeline<Datum> extends XYComponentCore<Datum, TimelineConfigInterf
       const firstItemHeight = this._getLineWidth(firstItem, firstItemIdx, rowHeight)
       const lastItemHeight = this._getLineWidth(lastItem, lastItemIdx, rowHeight)
 
-      if ((firstItemEnd - firstItemStart) / fullTimeRange * this._width < firstItemHeight) lineBleed[0] = firstItemHeight / 2
-      if ((lastItemEnd - lastItemStart) / fullTimeRange * this._width < lastItemHeight) lineBleed[1] = lastItemHeight / 2
+      if ((firstItemEnd - firstItemStart) / fullTimeRange * this._width < firstItemHeight) {
+        lineBleed[0] = config.showEmptySegmentsCorrectPosition ? firstItemHeight / 2 : 0
+      }
+
+      if ((lastItemEnd - lastItemStart) / fullTimeRange * this._width < lastItemHeight) {
+        lineBleed[1] = config.showEmptySegmentsCorrectPosition ? lastItemHeight / 2 : lastItemHeight
+      }
     }
     this._lineBleed = lineBleed
 
@@ -483,13 +488,14 @@ export class Timeline<Datum> extends XYComponentCore<Datum, TimelineConfigInterf
         console.warn('Unovis | Timeline: Line segments should not have negative lengths. Setting to 0.')
       }
 
-      const isLineTooShort = config.showEmptySegments && config.lineCap && (lineLength < lineWidth)
       const lineLengthCorrected = config.showEmptySegments
         ? Math.max(config.lineCap ? lineWidth : 1, lineLength)
         : Math.max(0, lineLength)
 
       const x = xScale(getNumber(d, config.x, i))
       const y = yStart + rowOrdinalScale(this._getRecordKey(d, i)) * rowHeight + (rowHeight - lineWidth) / 2
+
+      const isLineTooShort = config.showEmptySegments && config.showEmptySegmentsCorrectPosition && config.lineCap && (lineLength < lineWidth)
       const xOffset = isLineTooShort ? -(lineLengthCorrected - lineLength) / 2 : 0
 
       return {

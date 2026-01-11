@@ -18,6 +18,7 @@ export function getComponentList (
     { name: 'Timeline', sources: [coreComponentConfigPath, xyComponentConfigPath, '/components/timeline'], dataType: 'Datum[]', angularProvide: 'VisXYComponent' },
     { name: 'XYLabels', sources: [coreComponentConfigPath, xyComponentConfigPath, '/components/xy-labels'], dataType: 'Datum[]', angularProvide: 'VisXYComponent' },
     { name: 'Plotband', sources: [coreComponentConfigPath, xyComponentConfigPath, '/components/plotband'], dataType: null, angularProvide: 'VisXYComponent' },
+    { name: 'Plotline', sources: [coreComponentConfigPath, xyComponentConfigPath, '/components/plotline'], dataType: null, angularProvide: 'VisXYComponent' },
 
     // Single components
     { name: 'ChordDiagram', sources: [coreComponentConfigPath, '/components/chord-diagram'], dataType: '{ nodes: N[]; links?: L[] }', angularProvide: 'VisCoreComponent' },
@@ -26,6 +27,7 @@ export function getComponentList (
     { name: 'NestedDonut', sources: [coreComponentConfigPath, '/components/nested-donut'], dataType: 'Datum[]', angularProvide: 'VisCoreComponent' },
     { name: 'Sankey', sources: [coreComponentConfigPath, '/components/sankey'], dataType: '{ nodes: N[]; links?: L[] }', angularProvide: 'VisCoreComponent' },
     { name: 'TopoJSONMap', kebabCaseName: 'topojson-map', sources: [coreComponentConfigPath, '/components/topojson-map'], dataType: '{areas?: AreaDatum[]; points?: PointDatum[]; links?: LinkDatum[]}', angularProvide: 'VisCoreComponent' },
+    { name: 'Treemap', sources: [coreComponentConfigPath, '/components/treemap'], dataType: 'Datum[]', angularProvide: 'VisCoreComponent' },
 
     // Ancillary components
     { name: 'Tooltip', sources: ['/components/tooltip'], dataType: null, angularProvide: 'VisGenericComponent', elementSuffix: 'tooltip' },
@@ -34,6 +36,8 @@ export function getComponentList (
     // Standalone components
     { name: 'LeafletMap', sources: [coreComponentConfigPath, '/components/leaflet-map'], dataType: 'Datum[]', isStandAlone: true, angularProvide: 'VisCoreComponent', angularStyles: ['width: 100%', 'height: 100%', 'position: relative'], svelteStyles: ['display:block', 'position:relative'], vueStyles: ['display:block', 'position:relative'], solidStyles: ['display:"block"', 'position:"relative"'] },
     { name: 'LeafletFlowMap', sources: [coreComponentConfigPath, '/components/leaflet-map', '/components/leaflet-flow-map'], dataType: '{ points: PointDatum[]; flows?: FlowDatum[] }', isStandAlone: true, angularProvide: 'VisCoreComponent', angularStyles: ['width: 100%', 'height: 100%', 'position: relative'], svelteStyles: ['display:block', 'position:relative'], vueStyles: ['display:block', 'position:relative'], solidStyles: ['display:"block"', 'position:"relative"'] },
-    { name: 'BulletLegend', sources: ['/components/bullet-legend'], dataType: null, angularProvide: 'VisGenericComponent', isStandAlone: true, svelteStyles: ['display:block'], vueStyles: ['display:block'], solidStyles: ['display:"block"'] },
+    { name: 'BulletLegend', sources: ['/components/bullet-legend'], dataType: null, angularProvide: 'VisGenericComponent', isStandAlone: true, svelteStyles: ['display:block'], vueStyles: ['display:block'], solidStyles: ['display:"block"'], renderIntoProvidedDomNode: true },
+    { name: 'FlowLegend', sources: ['/components/flow-legend'], dataType: null, angularProvide: 'VisGenericComponent', isStandAlone: true, svelteStyles: ['display:block'], vueStyles: ['display:block'], solidStyles: ['display:"block"'], renderIntoProvidedDomNode: true },
+    { name: 'RollingPinLegend', sources: ['/components/rolling-pin-legend'], dataType: null, angularProvide: 'VisGenericComponent', isStandAlone: true, svelteStyles: ['display:block'], vueStyles: ['display:block'], solidStyles: ['display:"block"'] },
   ]
 }

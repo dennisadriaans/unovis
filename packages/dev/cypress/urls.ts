@@ -35,6 +35,11 @@ export const urls = [
     duration: 0,
   },
   {
+    title: 'Basic Rolling Pin Legend',
+    url: '/examples/Rolling%20Pin%20Legend/Basic%20Rolling%20Pin%20Legend',
+    duration: 0,
+  },
+  {
     title: 'Tooltip Rendered in Portal',
     url: '/examples/Tooltip/Tooltip%20Rendered%20in%20Portal',
     duration: 0,
@@ -47,6 +52,11 @@ export const urls = [
   {
     title: 'Tooltip Stickey Position',
     url: '/examples/Tooltip/Tooltip%20Sticky%20Position',
+    duration: 0,
+  },
+  {
+    title: 'Tooltip: Empty Content',
+    url: '/examples/Tooltip/Tooltip:%20Empty%20Content',
     duration: 0,
   },
   {
@@ -170,8 +180,8 @@ export const urls = [
     duration: 0,
   },
   {
-    title: 'Graph: Custom Node Fills',
-    url: '/examples/Graph/Graph:%20Custom%20Node%20Fills',
+    title: 'Graph: Custom Node Fills with Tooltip',
+    url: '/examples/Graph/Graph:%20Custom%20Node%20Fills%20with%20Tooltip',
     duration: 1000,
   },
   {
